@@ -24,4 +24,15 @@ class KataPotterTest extends \PHPUnit_Framework_TestCase {
 
     $this->assertEquals(16 * 0.95, $price);
   }
+
+  /** @test */
+  public function two_books_belonging_in_the_different_collections_has_no_discount() {
+    $kataPotter = new KataPotter();
+
+    $book1 = new Book("1");
+    $book2 = new Book("1");
+    $price = $kataPotter->priceOf([$book1, $book2]);
+
+    $this->assertEquals(16 * 1, $price);
+  }
 }
