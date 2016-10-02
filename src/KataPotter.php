@@ -15,6 +15,12 @@ class KataPotter {
    * @return float
    */
   public function priceOf($books) {
-    return 8.00;
+    $length = count($books);
+    return $length * $this->percentageOfTotal($books) * 8;
+  }
+
+  private function percentageOfTotal($books) {
+    $length = count($books);
+    return (1 - 0.05 * ($length - 1));
   }
 }
